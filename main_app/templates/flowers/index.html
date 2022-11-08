@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Flower List</h1>
+
+{% for flower in flowers %}
+<div class="card">
+    <a href="{% url 'detail' flower.id %}">
+        <div class="card-content">
+            <span class="card-title">{{ flower.common_name }}</span>
+            <img class="flower-img" src="{{ flower.img }}" alt="{{ flower.common_name }}" height=150px style="border-radius:5px;"/>
+            <p>Scientific Name: {{ flower.name }}</p>
+            <p>Type: {{ flower.type }}</p>
+            <p>Habitat: {{ flower.habitat }}</p>
+        </div>
+    </a>
+</div>
+{% endfor %} {% endblock %}

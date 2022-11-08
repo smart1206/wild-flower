@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WildFlower Collector</title>
+    <!-- Materialize link for styling -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="{% static 'css/style.css' %}"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </head>
+  <body>
+    <!-- classes: navbar-fixed, left brand-logo, nav-wrapper...etc, are a materialized tag -->
+    <header class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper teal darken-3">
+          <ul>
+            <li>
+              <a href="/" class="left brand-logo"><img src="{% static 'images/WildTennesseeBanner.png' %}" alt="logo" height=64/></a>
+            </li>
+          </ul>
+          <ul class="right">
+            <li><a href="{% url 'about' %}">About</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'flowers_create' %}">Add a Flower</a></li>
+            <li><a href="{% url 'index' %}">View All Flowers</a></li>
+            <li><a href="{% url 'uses_index' %}">View Flower Tags</a></li>
+            <li><a href="{% url 'uses_create' %}">Add New Flower Tag</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!-- This is where we inject our information. It is a placeholder for objects -->
+    <main class="container">{% block content %} {% endblock %}</main>
+    <footer class="page-footer teal darken-3">
+      <div class="right">
+        All Rights Reserved, &copy; 2022 Wildflower Tennessee &nbsp;
+      </div>
+    </footer>
+  </body>
+</html>

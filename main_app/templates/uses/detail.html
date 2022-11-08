@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Tags Details</h1>
+
+<div class="card">
+    <a href="{% url 'uses_detail' use.id %}">
+        <div class="card-content">
+        < class="card-title"
+            >
+            <span class="{{ use.name.lower }}-text">{{ use.name }}</span><br/>
+            Description:{{use.use}}</span
+        >
+        </div>
+        <div class="card-action">
+        <a href="{% url 'uses_update' use.id %}">Edit</a>
+        <a href="{% url 'uses_delete' use.id %}">Delete</a>
+        </div>
+    </a>
+</div>
+
+{% endblock %}

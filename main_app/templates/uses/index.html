@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Tags List</h1>
+
+{% for use in object_list %}
+<div class="card">
+    <a href="{% url 'uses_detail' use.id %}">
+        <div class="card-content">
+        <span class="card-title"
+            >
+            <span class="{{use.name}}-text">{{use.name}}</span><br/>
+            Description: {{use.use}}</span
+        >
+        </div>
+    </a>
+</div>
+
+{% endfor %} {% endblock%}
